@@ -2,16 +2,15 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
 )
 
 type Commune struct {
-	Nom        string
-	Code       string
-	Population int
+	Nom        string `json:"nom"`
+	Code       string `json:"code"`
+	Population int    `json:"pop"`
 }
 
 func main() {
@@ -40,7 +39,8 @@ func main() {
 	}
 
 	for _, commune := range communes {
-		fmt.Println(commune)
+		log.Printf("Commune : %v\n Code : %v\n Population : %v\n",
+			commune.Nom, commune.Code, commune.Population)
 	}
 
 }
