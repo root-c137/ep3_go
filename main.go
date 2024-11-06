@@ -8,16 +8,20 @@ import (
 )
 
 type Commune struct {
-	Nom        string `json:"nom"`
-	Code       string `json:"code"`
-	Population int    `json:"pop"`
+	Name    string
+	Country string
+	State   string
+	Lat     float32
+	Lan     float32
 }
 
 func main() {
-	const API_URL string = "https://geo.api.gouv.fr"
-	URI_Communes := "/communes?codePostal=12000"
+	CityName := "Lyon"
+	const BASE_URL string = "http://api.openweathermap.org/geo/1.0/direct?"
+	const API_KEY = "c732a4f732342956ec521490b59a7dce"
+	URI := "q=" + CityName + "&limit=1&appid=" + API_KEY
 
-	res, err := http.Get(API_URL + URI_Communes)
+	res, err := http.Get(BASE_URL + URI)
 	if err != nil {
 		log.Fatalf("La récuprération des données a échoué... : %v", err)
 	}
@@ -39,8 +43,8 @@ func main() {
 	}
 
 	for _, commune := range communes {
-		log.Printf("Commune : %v\n Code : %v\n Population : %v\n",
-			commune.Nom, commune.Code, commune.Population)
+		log.Printf("\n\nCommune : %v\nCode : %v\nPopulation : %v\nLatitude : %v\nLongitude : %v\n\n",
+			commune.Name, commune.Country, commune.State, commune.Lat, commune.Lan)
 	}
 
 }
