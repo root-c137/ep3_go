@@ -12,7 +12,7 @@ type Commune struct {
 	Country string
 	State   string
 	Lat     float32
-	Lan     float32
+	Lon     float32
 }
 
 func main() {
@@ -39,7 +39,7 @@ func main() {
 
 	for _, commune := range communes {
 		log.Printf("\n\nCommune : %v\nCode : %v\nPopulation : %v\nLatitude : %v\nLongitude : %v\n\n",
-			commune.Name, commune.Country, commune.State, commune.Lat, commune.Lan)
+			commune.Name, commune.Country, commune.State, commune.Lat, commune.Lon)
 	}
 
 }
