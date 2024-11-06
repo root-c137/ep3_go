@@ -22,13 +22,8 @@ func main() {
 	URI := "q=" + CityName + "&limit=1&appid=" + API_KEY
 
 	res, err := http.Get(BASE_URL + URI)
-	if err != nil {
+	if err != nil || res.StatusCode != 200 {
 		log.Fatalf("La récuprération des données a échoué... : %v", err)
-	}
-
-	if res.StatusCode != 200 {
-		log.Fatalf("La récuprération des données a échoué... : \nStatus code : %v\nerreur : %v",
-			res.StatusCode, err)
 	}
 
 	body, err := io.ReadAll(res.Body)
