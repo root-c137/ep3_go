@@ -19,7 +19,7 @@ func main() {
 	CityName := "Lyon"
 	const BASE_URL string = "http://api.openweathermap.org/geo/1.0/direct?"
 	const API_KEY = "c732a4f732342956ec521490b59a7dce"
-	URI := "q=" + CityName + "&limit=1&appid=" + API_KEY
+	URI := "q=" + CityName + "&country=fr&appid=" + API_KEY
 
 	res, err := http.Get(BASE_URL + URI)
 	if err != nil || res.StatusCode != 200 {
